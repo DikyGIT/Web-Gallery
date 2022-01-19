@@ -1,7 +1,10 @@
 <template>
   <div>
-    <h1>Halaman Home</h1>
-    {{ data }}
+    <h1>Halaman Category</h1>
+    {{ dataCategory }}
+    <!-- <div v-for="data in dataCategory" v-bind:key="data.id">
+      {{ data }}
+    </div> -->
   </div>
 </template>
 
@@ -13,7 +16,7 @@ export default {
 
   data() {
     return {
-      data: [],
+      dataCategory: [],
     };
   },
 
@@ -24,9 +27,13 @@ export default {
   methods: {
     getAllKatalog: async function () {
       try {
-        const res = await KatalogHome.getAllKatalog();
-        console.log(res);
-        this.data = res.data;
+        const response = await KatalogHome.getAllKatalog();
+        const parsingstringify = JSON.stringify(response.data);
+        const parsingjson = JSON.parse(JSON.parse(parsingstringify));
+        console.log(parsingjson);
+
+        // JSON.parse(response);
+        this.dataCategory = response.data;
       } catch (error) {
         console.log(error);
       }
