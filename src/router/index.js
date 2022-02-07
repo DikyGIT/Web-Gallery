@@ -12,7 +12,7 @@ const routes = [
     component: KatalogHome,
   },
   {
-    path: "/datakatalog",
+    path: "/Katalog%20Makanan",
     name: "KatalogData",
     component: KatalogData,
   },
